@@ -107,8 +107,8 @@ function welchPValue(a, b) {
   const se = Math.sqrt(vA / nA + vB / nB);
   if (se === 0) return 1;
   const t = (mA - mB) / se;
-  const df = (vA / nA + vB / nB) ** 2 / ((vA / nA) ** 2 / (nA - 1) + (vB / nB) ** 2 / (nB - 1));
-  const x = df / (df + t * t);
+  // const df = (vA / nA + vB / nB) ** 2 / ((vA / nA) ** 2 / (nA - 1) + (vB / nB) ** 2 / (nB - 1));
+  // const x = df / (df + t * t);
   // Beta regularized incomplete function approximation for t-distribution CDF
   const p = 2 * Math.min(normalCDF(t), normalCDF(-t));
   return Math.max(0, Math.min(1, p));
@@ -269,13 +269,13 @@ const Btn = ({ children, onClick, variant = "primary", small, disabled, style: s
   );
 };
 
-const StatCard = ({ label, value, sub, color, delay = 0 }) => (
-  <div className="fade-up" style={{ animationDelay: `${delay}s`, background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 12, padding: "16px 18px" }}>
-    <div style={{ fontSize: 12, color: "var(--text2)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{label}</div>
-    <div style={{ fontSize: 24, fontWeight: 600, color: color || "var(--text1)", fontFamily: "var(--mono)", letterSpacing: "-0.02em" }}>{value}</div>
-    {sub && <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4 }}>{sub}</div>}
-  </div>
-);
+// const StatCard = ({ label, value, sub, color, delay = 0 }) => (
+//   <div className="fade-up" style={{ animationDelay: `${delay}s`, background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 12, padding: "16px 18px" }}>
+//     <div style={{ fontSize: 12, color: "var(--text2)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{label}</div>
+//     <div style={{ fontSize: 24, fontWeight: 600, color: color || "var(--text1)", fontFamily: "var(--mono)", letterSpacing: "-0.02em" }}>{value}</div>
+//     {sub && <div style={{ fontSize: 12, color: "var(--text3)", marginTop: 4 }}>{sub}</div>}
+//   </div>
+// );
 
 // Mini bar chart for variant comparison
 const VariantBar = ({ label, value, max, color, suffix = "" }) => (
